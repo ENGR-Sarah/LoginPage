@@ -1,14 +1,19 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ProfileInfo from "./ProfileInfo";
 import EditProfile from "./EditProfile";
 import profilePic from "../assets/boy.png";
 
 const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState("info");
+  const navigate = useNavigate();
 
   return (
     <div style={styles.page}>
       <div style={styles.card}>
+        <button onClick={() => navigate("/home")} style={styles.backButton}>
+          ← Back to Home
+        </button>
         <div style={styles.tabs}>
           <button
             style={activeTab === "info" ? styles.activeTab : styles.tab}
@@ -51,6 +56,18 @@ const styles = {
     borderRadius: "12px",
     padding: "20px",
     boxShadow: "0 0 10px #ccc",
+  },
+  backButton: {
+    background: "none",
+    border: "none",
+    color: "#ff8a65",
+    cursor: "pointer",
+    fontSize: "16px",
+    padding: "10px 0",
+    marginBottom: "20px",
+    display: "block",
+    width: "100%",
+    textAlign: "left"
   },
   tabs: {
     display: "flex",
